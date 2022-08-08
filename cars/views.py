@@ -1,8 +1,8 @@
 from django.shortcuts import render
 
 
-def home_view(request):
+def car_list_all(request):
     return render(
         request=request,
-        template_name='home/home.html',
+        template_name='cars/car_list_all.html'
     )
