@@ -1,7 +1,8 @@
 from django.shortcuts import render
 
-def homeview(request):
+
+def home_view(request):
     return render(
         request=request,
-        template_name='home.html',
+        template_name='home/home.html',
     )
