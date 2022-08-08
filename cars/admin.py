@@ -1,3 +1,7 @@
 from django.contrib import admin
+from cars.models import Car
 
-# Register your models here.
+
+@admin.register(Car)
+class CarAdmin(admin.ModelAdmin):
+    list_display = ['car_number', 'car_mileage']

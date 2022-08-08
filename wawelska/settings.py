@@ -42,6 +42,7 @@ INSTALLED_APPS = [
 #  Newly added applications
 INSTALLED_APPS += [
     'home.apps.HomeConfig',
+    'cars.apps.CarsConfig',
 ]
 
 MIDDLEWARE = [
