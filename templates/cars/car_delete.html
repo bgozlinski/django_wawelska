@@ -5,11 +5,19 @@
 {% block content %}
     <div class="container">
         Czy napewno chcesz usunąć pojazd nr {{ car.car_number }}?
+        <p></p>
+        <div class="btn-group">
         <form method="POST">
             {% csrf_token %}
-            <button type="submit">USUŃ</button>
+            <button type="submit" class="btn btn-danger">USUŃ</button>
         </form>
-        <a href="{% url 'cars:car_list_all' %}">Cofnij</a>
+        </div>
+
+        <div class="btn-group">
+            <a href="{% url 'cars:car_list_all' %}">
+                <button type="button" class="btn btn-primary">COFNIJ</button>
+            </a>
+        </div>
     </div>
 
 {% endblock %}

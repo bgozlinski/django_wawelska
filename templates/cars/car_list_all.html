@@ -9,7 +9,8 @@
             <tr>
                 <th>NUMER WEWNĘTRZNY</th>
                 <th>PRZEBIEG</th>
-                <th>DATA?!</th>
+                <th>DATA PRZEGLĄDU SERWISOWEGO</th>
+                <th>DATA PRZEGLĄDU TECHNICZNEGO</th>
             </tr>
             </thead>
             <tbody>
@@ -18,6 +19,7 @@
                     <td class="table-danger"><a href="{% url 'cars:car_details' car.id %}">{{ car.car_number }}</a></td>
                     <td>{{ car.car_mileage }}</td>
                     <td>{{ car.car_service_inspection_date }}</td>
+                    <td>{{ car.car_technical_inspection_date }}</td>
                 </tr>
                 {% endfor %}
 

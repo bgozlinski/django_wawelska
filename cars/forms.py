@@ -6,3 +6,7 @@ class CarForm(ModelForm):
     class Meta:
         model = Car
         fields = '__all__'
+        help_texts = {
+            'car_service_inspection_date': 'Uzyj formatu: YYYY-MM-DD',
+            'car_technical_inspection_date': 'Uzyj formatu: YYYY-MM-DD',
+        }
