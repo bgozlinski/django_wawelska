@@ -12,3 +12,15 @@ def car_list_all(request):
             'cars': cars,
         }
     )
+
+
+def details(request, car_id):
+    car = Car.objects.get(pk=car_id)
+
+    return render(
+        request=request,
+        template_name='cars/car_details.html',
+        context={
+            'car': car
+        }
+    )

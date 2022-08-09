@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block title %} {{ car.car_number }} {% endblock %}
+
+{% block content %}
+    <div class="container mt-3">
+        <table class="table">
+            <thead>
+            <tr>
+                <th>NUMER WEWNĘTRZNY</th>
+                <th>PRZEBIEG</th>
+                <th>DATA PRZEGLĄDU SERWISOWEGO</th>
+                <th>DATA PRZEGLĄDU TECHNICZNEGO</th>
+                <th>OPIS</th>
+            </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>{{ car.car_number }}</td>
+                    <td>{{ car.car_mileage }}</td>
+                    <td>{{ car.car_service_inspection_date }}</td>
+                    <td>{{ car.car_technical_inspection_date }}</td>
+                    <td>{{ car.car_content }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+{% endblock %}
