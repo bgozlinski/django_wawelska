@@ -1,5 +1,5 @@
 from django.contrib.auth.decorators import login_required
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from cars.forms import CarForm
 from cars.models import Car
 
@@ -34,6 +34,7 @@ def car_create(request):
 
     if car_form.is_valid():
         car_form.save()
+        return redirect('cars:car_list_all')
 
     return render(
         request=request,

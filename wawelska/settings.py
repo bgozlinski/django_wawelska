@@ -45,6 +45,17 @@ INSTALLED_APPS += [
     'cars.apps.CarsConfig',
 ]
 
+#  Bootstrap5
+INSTALLED_APPS += [
+    'bootstrap5',
+]
+
+#  Crispy forms
+INSTALLED_APPS += [
+    'crispy_forms',
+    'crispy_bootstrap5',
+]
+
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -109,7 +120,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/4.1/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'pl-PL'
 
 TIME_ZONE = 'UTC'
 
@@ -131,3 +142,6 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 LOGIN_URL = 'login'
 LOGIN_REDIRECT_URL = "home:home_view"
 LOGOUT_REDIRECT_URL = "home:home_view"
+
+CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
+CRISPY_TEMPLATE_PACK = "bootstrap5"

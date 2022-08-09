@@ -5,4 +5,4 @@ from cars.models import Car
 class CarForm(ModelForm):
     class Meta:
         model = Car
-        exclude = []
+        fields = '__all__'
