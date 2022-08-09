@@ -8,4 +8,5 @@ urlpatterns = [
     # details of car
     path('<int:car_id>/', views.details, name='car_details'),
     path('add/', views.car_create, name='car_create'),
+    path('delete/<int:car_id>/', views.car_delete, name='car_delete'),
 ]

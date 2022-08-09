@@ -43,3 +43,18 @@ def car_create(request):
             'car_form': car_form
         }
     )
+
+
+def car_delete(request, car_id):
+    car = Car.objects.get(pk=car_id)
+    if request.method == 'POST':
+        car.delete()
+        return redirect('cars:car_list_all')
+
+    return render(
+        request=request,
+        template_name='cars/car_delete.html',
+        context={
+            'car': car
+        }
+    )

@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block title %} Usuń pojazd {{ car.car_number }} {% endblock %}
+
+{% block content %}
+    <div class="container">
+        Czy napewno chcesz usunąć pojazd nr {{ car.car_number }}?
+        <form method="POST">
+            {% csrf_token %}
+            <button type="submit">USUŃ</button>
+        </form>
+        <a href="{% url 'cars:car_list_all' %}">Cofnij</a>
+    </div>
+
+{% endblock %}
