@@ -1,0 +1,16 @@
+.header_button_link {
+  text-decoration: none;
+}
+
+.header_button_btn {
+  width: 120px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  font-size: 20px;
+}
+
+.new_h1 {
+  color: brown;
+}

@@ -3,10 +3,28 @@
 {% block title %} Cars {% endblock %}
 
 {% block content %}
+    <div class="container">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>NUMER WEWNĘTRZNY</th>
+                <th>PRZEBIEG</th>
+                <th>DATA?!</th>
+            </tr>
+            </thead>
+            <tbody>
+                {% for car in cars %}
+                <tr>
+                    <td>{{ car.car_number }}</td>
+                    <td>{{ car.car_mileage }}</td>
+                    <td>{{ car.car_service_inspection_date }}</td>
+                </tr>
+                {% endfor %}
 
-    <h1>Cars list - show all</h1>
-    {% for car in cars %}
-        {{ car }}
-    {% endfor %}
+    </tbody>
+  </table>
+    </div>
+
+
 
 {% endblock %}

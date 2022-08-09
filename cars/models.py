@@ -7,3 +7,6 @@ class Car(models.Model):
     car_service_inspection_date = models.DateField()
     car_technical_inspection_date = models.DateField()
     car_content = models.TextField()
+
+    def __str__(self):
+        return f'{self.car_number}'
