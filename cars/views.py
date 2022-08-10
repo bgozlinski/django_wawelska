@@ -47,6 +47,30 @@ def car_create(request):
 
 
 @login_required()
+def car_edit(request, car_id):
+    car = Car.objects.get(pk=car_id)
+
+    car_form = CarForm(
+        data=request.POST,
+        instance=car)
+
+    print(car_form)
+    print(car_form)
+
+    if car_form.is_valid():
+        car_form.save()
+        return redirect('cars:car_list_all')
+
+    return render(
+        request=request,
+        template_name='cars/car_form.html',
+        context={
+            'car_form': car_form
+        }
+    )
+
+
+@login_required()
 def car_delete(request, car_id):
     car = Car.objects.get(pk=car_id)
     if request.method == 'POST':
@@ -60,3 +84,5 @@ def car_delete(request, car_id):
             'car': car
         }
     )
+
+

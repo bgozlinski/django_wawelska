@@ -22,6 +22,7 @@
                     <td>{{ car.car_mileage }}</td>
                     <td>{{ car.car_service_inspection_date }}</td>
                     <td>{{ car.car_technical_inspection_date }}</td>
+                    <td><a href="{% url 'cars:car_edit' car.id %}">Edytuj</a></td>
                 </tr>
 
                 {% endfor %}

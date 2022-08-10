@@ -5,13 +5,15 @@
 {% block content %}
 
     {% load crispy_forms_tags %}
-        <dir class="container">
+        <div  class="container">
             <form method="POST">
                 {% csrf_token %}
-                {{ car_form|crispy }}
+                {% for f in car_form %}
+                {{ f|as_crispy_field }}
+                {% endfor %}
                 <input type="submit" value="send" name="post_submit">
             </form>
-        </dir>
+        </div>
 {% endblock %}
 
 
