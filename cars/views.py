@@ -31,7 +31,7 @@ def details(request, car_id):
 
 @login_required()
 def car_create(request):
-    car_form = CarForm(request.POST)
+    car_form = CarForm(request.POST or None)
 
     if car_form.is_valid():
         car_form.save()
@@ -49,9 +49,9 @@ def car_create(request):
 @login_required()
 def car_edit(request, car_id):
     car = Car.objects.get(pk=car_id)
-
     car_form = CarForm(
-        data=request.POST,
+        data=request.POST or None,
+        files=request.FILES or None,
         instance=car)
 
     if car_form.is_valid():
