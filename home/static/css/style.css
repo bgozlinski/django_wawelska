@@ -2,6 +2,10 @@
   text-decoration: none;
 }
 
+a:link {
+  text-decoration: none;
+}
+
 .header_button_btn {
   width: 120px;
   height: 50px;

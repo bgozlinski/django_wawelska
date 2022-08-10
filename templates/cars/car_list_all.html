@@ -13,26 +13,28 @@
                 <th>PRZEBIEG</th>
                 <th>DATA PRZEGLĄDU SERWISOWEGO</th>
                 <th>DATA PRZEGLĄDU TECHNICZNEGO</th>
+                <th>OPCJE</th>
             </tr>
             </thead>
             <tbody>
                 {% for car in cars %}
                 <tr>
-                    <td class="table-danger">{{ car.car_number }}</td>
+                    <td>{{ car.car_number }}</td>
                     <td>{{ car.car_mileage }}</td>
                     <td>{{ car.car_service_inspection_date }}</td>
                     <td>{{ car.car_technical_inspection_date }}</td>
                     <td>
                         <a href="{% url 'cars:car_details' car.id %}">
-                            <button type="button" class="btn btn-success header_button_link">View</button>
+                            <button type="button" class="btn btn-success header_button_link"><i class="bi bi-eye"></i></button>
                         </a>
 
                         <a href="{% url 'cars:car_edit' car.id %}">
-                            <button type="button" class="btn btn-primary header_button_link">Edit</button>
+                            <button type="button" class="btn btn-primary header_button_link"><i class="bi bi-pencil-square"></i></button>
                         </a>
 
-                        <button type="button" class="btn btn-danger">Del</button>
-
+                        <a href="{% url 'cars:car_delete' car.id %}">
+                            <button type="button" class="btn btn-danger"><i class="bi bi-trash-fill"></i></i></button>
+                        </a>
                     </td>
                 </tr>
 
