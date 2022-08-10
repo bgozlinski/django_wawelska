@@ -94,5 +94,3 @@ def car_delete(request, car_id):
             'car': car
         }
     )
-
-

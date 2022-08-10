@@ -48,16 +48,13 @@ INSTALLED_APPS += [
 #  Bootstrap5
 INSTALLED_APPS += [
     'bootstrap5',
+    'bootstrap_datepicker_plus'
 ]
 
 #  Crispy forms
 INSTALLED_APPS += [
     'crispy_forms',
     'crispy_bootstrap5',
-]
-
-INSTALLED_APPS += [
-    'bootstrap_datepicker_plus',
 ]
 
 MIDDLEWARE = [
