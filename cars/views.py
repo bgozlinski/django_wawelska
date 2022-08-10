@@ -52,7 +52,8 @@ def car_create(request):
         request=request,
         template_name='cars/car_form.html',
         context={
-            'car_form': car_form
+            'car_form': car_form,
+            'edit': False
         }
     )
 
@@ -73,7 +74,9 @@ def car_edit(request, car_id):
         request=request,
         template_name='cars/car_form.html',
         context={
-            'car_form': car_form
+            'car_form': car_form,
+            'edit': True,
+            'car': car
         }
     )
 

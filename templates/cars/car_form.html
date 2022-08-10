@@ -1,6 +1,12 @@
 {% extends "base.html" %}
 
-{% block title %} Dodaj pojazd {% endblock %}
+{% block title %}
+    {% if edit is False %}
+        Dodaj pojazd
+    {% else %}
+        Edytuj pojazd {{ car.car_number }}
+    {% endif %}
+{% endblock %}
 
 {% block content %}
 
@@ -8,13 +14,20 @@
         <div  class="container">
             <form method="POST">
                 {% csrf_token %}
+
                 {% for f in car_form %}
-                {{ f|as_crispy_field }}
+                    {{ f|as_crispy_field }}
                 {% endfor %}
-                <button type="submit" class="btn btn-success">DODAJ</button>
+
+                {% if edit is False %}
+                    <button type="submit" class="btn btn-success">DODAJ</button>
+                {% else %}
+                    <button type="submit" class="btn btn-success">EDYTUJ</button>
+                {% endif %}
 
             </form>
         </div>
+
 {% endblock %}
 
 

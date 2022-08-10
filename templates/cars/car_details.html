@@ -5,25 +5,26 @@
 {% block content %}
     <div class="container mt-3">
         <table class="table">
-            <thead>
             <tr>
                 <th>NUMER WEWNĘTRZNY</th>
-                <th>PRZEBIEG</th>
-                <th>DATA PRZEGLĄDU SERWISOWEGO</th>
-                <th>DATA PRZEGLĄDU TECHNICZNEGO</th>
-                <th>OPIS</th>
+                <td>{{ car.car_number }}</td>
             </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>{{ car.car_number }}</td>
-                    <td>{{ car.car_mileage }}</td>
-                    <td>{{ car.car_service_inspection_date }}</td>
-                    <td>{{ car.car_technical_inspection_date }}</td>
-                    <td>{{ car.car_content }}</td>
-                </tr>
-            </tbody>
+            <tr>
+                <th>PRZEBIEG</th>
+                <td>{{ car.car_mileage }}</td>
+            </tr>
+            <tr>
+                <th>DATA PRZEGLĄDU SERWISOWEGO</th>
+                <td>{{ car.car_service_inspection_date }}</td>
+            </tr>
+            <tr>
+                <th>DATA PRZEGLĄDU TECHNICZNEGO</th>
+                <td>{{ car.car_technical_inspection_date }}</td>
+            </tr>
+            <tr>
+                <th>OPIS</th>
+                <td>{{ car.car_content }}</td>
+            </tr>
         </table>
     </div>
-
 {% endblock %}
