@@ -2,16 +2,27 @@ from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
 from cars.forms import CarForm
 from cars.models import Car
+from datetime import date, timedelta
+
+
+def check_inspection_date():
+    days = 30
+    warning_alert = date.today() + timedelta(days=days)
+    danger_alert = date.today()
+    return warning_alert, danger_alert
 
 
 @login_required()
 def car_list_all(request):
     cars = Car.objects.all()
+    warning_alert, danger_alert = check_inspection_date()
     return render(
         request=request,
         template_name='cars/car_list_all.html',
         context={
             'cars': cars,
+            'warning_allert': warning_alert,
+            'danger_alert': danger_alert
         }
     )
 
