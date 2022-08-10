@@ -29,6 +29,7 @@ def details(request, car_id):
     )
 
 
+@login_required()
 def car_create(request):
     car_form = CarForm(request.POST)
 
@@ -45,6 +46,7 @@ def car_create(request):
     )
 
 
+@login_required()
 def car_delete(request, car_id):
     car = Car.objects.get(pk=car_id)
     if request.method == 'POST':
