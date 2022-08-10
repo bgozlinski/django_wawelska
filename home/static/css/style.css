@@ -17,6 +17,8 @@
   margin: 5px 5px 5px 5px;
 }
 
-.new_h1 {
-  color: brown;
+.container_login {
+  max-width: 14%;
+  margin: auto;
+  padding-top: 50px;
 }

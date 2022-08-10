@@ -54,9 +54,6 @@ def car_edit(request, car_id):
         data=request.POST,
         instance=car)
 
-    print(car_form)
-    print(car_form)
-
     if car_form.is_valid():
         car_form.save()
         return redirect('cars:car_list_all')

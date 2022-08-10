@@ -18,11 +18,22 @@
             <tbody>
                 {% for car in cars %}
                 <tr>
-                    <td class="table-danger"><a href="{% url 'cars:car_details' car.id %}">{{ car.car_number }}</a></td>
+                    <td class="table-danger">{{ car.car_number }}</td>
                     <td>{{ car.car_mileage }}</td>
                     <td>{{ car.car_service_inspection_date }}</td>
                     <td>{{ car.car_technical_inspection_date }}</td>
-                    <td><a href="{% url 'cars:car_edit' car.id %}">Edytuj</a></td>
+                    <td>
+                        <a href="{% url 'cars:car_details' car.id %}">
+                            <button type="button" class="btn btn-success header_button_link">View</button>
+                        </a>
+
+                        <a href="{% url 'cars:car_edit' car.id %}">
+                            <button type="button" class="btn btn-primary header_button_link">Edit</button>
+                        </a>
+
+                        <button type="button" class="btn btn-danger">Del</button>
+
+                    </td>
                 </tr>
 
                 {% endfor %}
@@ -31,7 +42,7 @@
 
     <div class="d-flex justify-content-end">
             <a class="header_button_link" href="{%  url 'cars:car_create' %}">
-                <button type="button" class="btn btn-success add_buttonheader_button_link">DODAJ</button>
+                <button type="button" class="btn btn-success add_button header_button_link">DODAJ</button>
             </a>
     </div>
     </div>
