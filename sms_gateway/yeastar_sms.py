@@ -35,7 +35,7 @@ for row in c.execute('SELECT car_number, car_service_inspection_date, car_techni
         yeastar.send_sms(
             sim_port=1,
             phone_number='+48572720038',
-            message=f'Pojazd numer: {row[0]}. Zbliza się termin przeglądu serwisowego {row[1]}'
+            message=f'Pojazd numer: {row[0]}. Zbliża się termin przeglądu serwisowego {row[1]}'
         )
 
     if danger_alert > car_technical_inspection_date:
@@ -49,5 +49,5 @@ for row in c.execute('SELECT car_number, car_service_inspection_date, car_techni
         yeastar.send_sms(
             sim_port=1,
             phone_number='+48572720038',
-            message=f'Pojazd numer: {row[0]}. Zbliza się termin przeglądu serwisowego {row[2]}'
+            message=f'Pojazd numer: {row[0]}. Zbliża się termin przeglądu serwisowego {row[2]}'
         )
