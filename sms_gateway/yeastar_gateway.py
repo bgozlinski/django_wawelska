@@ -5,6 +5,13 @@ from random import randint
 
 
 class Yeastar:
+    """
+    Configuration for Yeastar tg800 GSM 8-port gateway
+    connect_to_yeastar  -> connection to Yeastar gateway
+    send_command        -> sending text commands to gateway
+    send_sms            -> sending sms message from Yeastar gateway to specified phone_number using sim_port
+    generate_id         -> generates random id
+    """
     BUFFER_SIZE = 1024
     LoggedIn = False
     s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
