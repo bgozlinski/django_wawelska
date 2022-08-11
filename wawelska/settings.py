@@ -43,6 +43,7 @@ INSTALLED_APPS = [
 INSTALLED_APPS += [
     'home.apps.HomeConfig',
     'cars.apps.CarsConfig',
+    'users.apps.CarsConfig',
 ]
 
 #  Bootstrap5
