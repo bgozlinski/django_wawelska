@@ -3,7 +3,7 @@ from django.db import models
 
 class Car(models.Model):
     car_number = models.SmallIntegerField(
-        blank=False,
+        blank=True,
         null=True,
         verbose_name='Numer pojazdu'
     )
@@ -26,6 +26,13 @@ class Car(models.Model):
         blank=True,
         null=True,
         verbose_name='opis'
+    )
+    user = models.ForeignKey(
+        'users.User',
+        on_delete=models.CASCADE,
+        related_name='cars',
+        blank=True,
+        null=True,
     )
 
     def __str__(self):
