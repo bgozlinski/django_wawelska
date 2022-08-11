@@ -15,11 +15,18 @@ yeastar = Yeastar('192.168.221.161', 5038, 'isander', '075TovoneL')
 yeastar.connect_to_yeastar()
 
 #  Get data from SQLite database
-for row in c.execute('SELECT car_number, car_service_inspection_date, car_technical_inspection_date FROM cars_car'):
+for row in c.execute('SELECT cars_car.car_number, '
+                     'cars_car.car_service_inspection_date, '
+                     'cars_car.car_technical_inspection_date, '
+                     'users_user.user_phone_number '
+                     'FROM cars_car, users_user '
+                     'WHERE cars_car.user_id = users_user.id'):
+    print(row)
     if row[1] is not None and row[2] is not None:
         #  Convert string to date
         car_service_inspection_date = datetime.strptime(row[1], '%Y-%m-%d')
         car_technical_inspection_date = datetime.strptime(row[2], '%Y-%m-%d')
+        user_phone_number = f'+48{row[3]}'
     else:
         continue
 
@@ -27,27 +34,27 @@ for row in c.execute('SELECT car_number, car_service_inspection_date, car_techni
     if danger_alert > car_service_inspection_date:
         yeastar.send_sms(
             sim_port=1,
-            phone_number='+48572720038',
+            phone_number=f'{user_phone_number}',
             message=f'Pojazd numer: {row[0]}. Zakończyła się data przeglądu serwisowego {row[1]}'
         )
 
     elif warning_alert > car_service_inspection_date:
         yeastar.send_sms(
             sim_port=1,
-            phone_number='+48572720038',
+            phone_number=f'{user_phone_number}',
             message=f'Pojazd numer: {row[0]}. Zbliża się termin przeglądu serwisowego {row[1]}'
         )
 
     if danger_alert > car_technical_inspection_date:
         yeastar.send_sms(
             sim_port=1,
-            phone_number='+48572720038',
+            phone_number=f'{user_phone_number}',
             message=f'Pojazd numer: {row[0]}. Zakończyła się data przeglądu serwisowego {row[2]}'
         )
 
     elif warning_alert > car_technical_inspection_date:
         yeastar.send_sms(
             sim_port=1,
-            phone_number='+48572720038',
+            phone_number=f'{user_phone_number}',
             message=f'Pojazd numer: {row[0]}. Zbliża się termin przeglądu serwisowego {row[2]}'
         )
