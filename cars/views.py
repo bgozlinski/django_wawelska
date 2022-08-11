@@ -11,7 +11,7 @@ def check_inspection_date(delta_days):
     return warning_alert, danger_alert
 
 
-@login_required()
+
 def car_list_all(request):
     cars = Car.objects.all()
     warning_alert, danger_alert = check_inspection_date(delta_days=30)
