@@ -30,7 +30,6 @@ class Yeastar:
         self.s.send(message)
         sleep(timeout)
         data = self.s.recv(self.BUFFER_SIZE)
-        print(data.decode())
         return data
 
     def send_sms(self, sim_port: int, phone_number: str, message: str):
