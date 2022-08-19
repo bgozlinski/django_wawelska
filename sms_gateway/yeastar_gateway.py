@@ -28,10 +28,10 @@ class Yeastar:
         data = self.s.recv(self.BUFFER_SIZE)
         print(data)
         if data.decode().__contains__("Asterisk"):
-            data = self.send_command(message="Action: login\r\nUsername: {self.username}\r\nSecret: {self.secret}\r\n\r\n".encode(),
-                                     timeout=10
+            data = self.send_command(message=f"Action: login\r\nUsername: {self.username}\r\nSecret: {self.secret}\r\n\r\n".encode(),
+                                     timeout=3
                                      )
-            print(data)
+
             if data.decode().__contains__("Success"):
                 self.LoggedIn = True
                 print('Connection Ok')
@@ -42,6 +42,7 @@ class Yeastar:
     def send_command(self, message: bytes, timeout: int):
         self.s.send(message)
         data = self.s.recv(self.BUFFER_SIZE)
+        print(data)
         sleep(timeout)
         return data
 
