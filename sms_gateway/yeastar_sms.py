@@ -29,6 +29,7 @@ for row in c.execute('SELECT cars_car.car_number, '
         car_service_inspection_date = datetime.strptime(row[1], '%Y-%m-%d')
         car_technical_inspection_date = datetime.strptime(row[2], '%Y-%m-%d')
         user_phone_number = f'+48{row[3]}'
+
     else:
         continue
 

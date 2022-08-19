@@ -28,9 +28,10 @@ class Yeastar:
         data = self.s.recv(self.BUFFER_SIZE)
         print(data)
         if data.decode().__contains__("Asterisk"):
-            data = self.send_command(message=f"Action: login\nUsername: {self.username}\nSecret: {self.secret}\n\n".encode(),
-                                     timeout=3
-                                     )
+            data = self.send_command(
+                message="Action: login\r\nUsername: {self.username}\r\nSecret: {self.secret}\r\n\r\n".encode(),
+                timeout=3
+            )
 
             if data.decode().__contains__("Success"):
                 self.LoggedIn = True
@@ -54,7 +55,7 @@ class Yeastar:
 
     def send_sms(self, sim_port: int, phone_number: str, message: str):
         self.send_command(
-            message=f'Action: smscommand\ncommand: gsm send sms {sim_port+1} {phone_number} "{message}" {generate_id}\n\n'.encode(),
+            message=f'Action: smscommand\r\ncommand: gsm send sms {sim_port+1} {phone_number} "{message}" {generate_id}\r\n\r\n'.encode(),
             timeout=6
         )
         print(f'Sending sms to {phone_number} ...')
