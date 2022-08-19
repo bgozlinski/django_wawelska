@@ -29,7 +29,7 @@ class Yeastar:
         print(data)
         if data.decode().__contains__("Asterisk"):
             data = self.send_command(
-                message="Action: login\r\nUsername: {self.username}\r\nSecret: {self.secret}\r\n\r\n".encode(),
+                message=f'Action: login\r\nUsername: {self.username}\r\nSecret: {self.secret}\r\n\r\n'.encode(),
                 timeout=3
             )
 
