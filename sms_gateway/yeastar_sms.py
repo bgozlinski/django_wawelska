@@ -32,7 +32,6 @@ for row in c.execute('SELECT cars_car.car_number, '
 
     else:
         continue
-
     #  Check date if True send SMS message to phone_number
     if danger_alert > car_service_inspection_date:
         yeastar.send_sms(
@@ -40,7 +39,6 @@ for row in c.execute('SELECT cars_car.car_number, '
             phone_number=f'{user_phone_number}',
             message=f'Pojazd numer: {row[0]}. Zakończyła się data przeglądu serwisowego {row[1]}'
         )
-        print(f'danger_alert car_service_inspection_date')
 
     elif warning_alert > car_service_inspection_date:
         yeastar.send_sms(
@@ -48,7 +46,6 @@ for row in c.execute('SELECT cars_car.car_number, '
             phone_number=f'{user_phone_number}',
             message=f'Pojazd numer: {row[0]}. Zbliża się termin przeglądu serwisowego {row[1]}'
         )
-        print(f'warning_alert car_service_inspection_date')
 
     if danger_alert > car_technical_inspection_date:
         yeastar.send_sms(
@@ -56,7 +53,6 @@ for row in c.execute('SELECT cars_car.car_number, '
             phone_number=f'{user_phone_number}',
             message=f'Pojazd numer: {row[0]}. Zakończyła się data przeglądu technicznego {row[2]}'
         )
-        print(f'danger_alert car_technical_inspection_date')
 
     elif warning_alert > car_technical_inspection_date:
         yeastar.send_sms(
@@ -64,6 +60,5 @@ for row in c.execute('SELECT cars_car.car_number, '
             phone_number=f'{user_phone_number}',
             message=f'Pojazd numer: {row[0]}. Zbliża się termin przeglądu technicznego {row[2]}'
         )
-        print(f'warning_alert car_technical_inspection_date')
 
     yeastar.close_command()

@@ -26,7 +26,6 @@ class Yeastar:
         self.s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         self.s.connect((self.host, self.port))
         data = self.s.recv(self.BUFFER_SIZE)
-        print(data)
         if data.decode().__contains__("Asterisk"):
             data = self.send_command(
                 message=f'Action: login\r\nUsername: {self.username}\r\nSecret: {self.secret}\r\n\r\n'.encode(),
@@ -42,21 +41,19 @@ class Yeastar:
 
     def send_command(self, message: bytes, timeout: int):
         self.s.send(message)
-        print(message)
         data = self.s.recv(self.BUFFER_SIZE)
-        print(data)
+        print(f'{data.decode()}')
         sleep(timeout)
         return data
 
     def close_command(self):
         self.s.close()
         print('Closing connection...')
-        sleep(5)
 
     def send_sms(self, sim_port: int, phone_number: str, message: str):
         self.send_command(
             message=f'Action: smscommand\r\ncommand: gsm send sms {sim_port+1} {phone_number} "{message}" {generate_id}\r\n\r\n'.encode(),
-            timeout=6
+            timeout=3
         )
         print(f'Sending sms to {phone_number} ...')
 
