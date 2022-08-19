@@ -33,7 +33,7 @@ class Yeastar:
             if data.decode().__contains__('Error'):
                 self.s.close()
 
-    def send_command(self, message: bytes, timeout: int):
+    def send_command(self, message, timeout: int):
         self.s.send(message)
         data = self.s.recv(self.BUFFER_SIZE)
         sleep(timeout)
