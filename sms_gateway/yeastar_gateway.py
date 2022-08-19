@@ -26,8 +26,10 @@ class Yeastar:
         self.s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         self.s.connect((self.host, self.port))
         data = self.s.recv(self.BUFFER_SIZE)
+        print(data)
         if data.decode().__contains__("Asterisk"):
             data = self.send_command(f"Action: login\r\nUsername: {self.username}\r\nSecret: {self.secret}\r\n\r\n".encode(), 3)
+            print(data)
             if data.decode().__contains__("Success"):
                 self.LoggedIn = True
                 print('Connection Ok')
