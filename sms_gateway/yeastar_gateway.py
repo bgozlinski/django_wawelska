@@ -30,10 +30,12 @@ class Yeastar:
             data = self.send_command(f"Action: login\r\nUsername: {self.username}\r\nSecret: {self.secret}\r\n\r\n".encode(), 3)
             if data.decode().__contains__("Success"):
                 self.LoggedIn = True
+                print('Connection Ok')
             if data.decode().__contains__('Error'):
+                print('Connection Error... Closing...')
                 self.s.close()
 
-    def send_command(self, message, timeout: int):
+    def send_command(self, message: bytes, timeout: int):
         self.s.send(message)
         data = self.s.recv(self.BUFFER_SIZE)
         sleep(timeout)
