@@ -28,7 +28,9 @@ class Yeastar:
         data = self.s.recv(self.BUFFER_SIZE)
         print(data)
         if data.decode().__contains__("Asterisk"):
-            data = self.send_command(f"Action: login\r\nUsername: {self.username}\r\nSecret: {self.secret}\r\n\r\n".encode(), 3)
+            data = self.send_command(message="Action: login\r\nUsername: {self.username}\r\nSecret: {self.secret}\r\n\r\n".encode(),
+                                     timeout=10
+                                     )
             print(data)
             if data.decode().__contains__("Success"):
                 self.LoggedIn = True
