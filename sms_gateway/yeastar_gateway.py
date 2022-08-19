@@ -41,6 +41,7 @@ class Yeastar:
 
     def send_command(self, message: bytes, timeout: int):
         self.s.send(message)
+        print(message)
         data = self.s.recv(self.BUFFER_SIZE)
         print(data)
         sleep(timeout)
