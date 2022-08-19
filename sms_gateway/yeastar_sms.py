@@ -1,5 +1,5 @@
 import sqlite3
-from datetime import datetime, timedelta
+from datetime import timedelta
 from yeastar_gateway import *
 
 #  Connect to local SQLite database
