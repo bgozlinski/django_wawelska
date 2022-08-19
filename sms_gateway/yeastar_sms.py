@@ -12,8 +12,8 @@ warning_alert = datetime.today() + timedelta(days=30)
 
 #  Connect to Yeastar tg-800 GSM gateway
 yeastar = Yeastar('192.168.221.161', 5038, 'isander', '075TovoneL')
+# yeastar.connect_to_yeastar()
 yeastar.connect_to_yeastar()
-
 #  Get data from SQLite database
 for row in c.execute('SELECT cars_car.car_number, '
                      'cars_car.car_service_inspection_date, '
@@ -58,3 +58,5 @@ for row in c.execute('SELECT cars_car.car_number, '
             phone_number=f'{user_phone_number}',
             message=f'Pojazd numer: {row[0]}. Zbliża się termin przeglądu serwisowego {row[2]}'
         )
+
+yeastar.close_command()

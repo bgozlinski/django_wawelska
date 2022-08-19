@@ -35,12 +35,19 @@ class Yeastar:
 
     def send_command(self, message: bytes, timeout: int):
         self.s.send(message)
-        sleep(timeout)
         data = self.s.recv(self.BUFFER_SIZE)
+        sleep(timeout)
         return data
 
+    def close_command(self):
+        self.s.close()
+        sleep(5)
+
     def send_sms(self, sim_port: int, phone_number: str, message: str):
-        self.send_command(f'Action: smscommand\r\ncommand: gsm send sms {sim_port+1} {phone_number} "{message}" {generate_id}\r\n\r\n'.encode(), 6)
+        self.send_command(
+            message=f'Action: smscommand\r\ncommand: gsm send sms {sim_port+1} {phone_number} "{message}" {generate_id}\r\n\r\n'.encode(),
+            timeout=6
+        )
 
 
 def generate_id():
