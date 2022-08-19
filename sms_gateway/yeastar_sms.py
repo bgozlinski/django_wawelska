@@ -13,7 +13,7 @@ warning_alert = datetime.today() + timedelta(days=30)
 #  Connect to Yeastar tg-800 GSM gateway
 yeastar = Yeastar('192.168.221.161', 5038, 'isander', '075TovoneL')
 # yeastar.connect_to_yeastar()
-yeastar.connect_to_yeastar()
+
 #  Get data from SQLite database
 for row in c.execute('SELECT cars_car.car_number, '
                      'cars_car.car_service_inspection_date, '
@@ -21,7 +21,9 @@ for row in c.execute('SELECT cars_car.car_number, '
                      'users_user.user_phone_number '
                      'FROM cars_car, users_user '
                      'WHERE cars_car.user_id = users_user.id'):
+
     print(row)
+    yeastar.connect_to_yeastar()
     if row[1] is not None and row[2] is not None:
         #  Convert string to date
         car_service_inspection_date = datetime.strptime(row[1], '%Y-%m-%d')
@@ -37,6 +39,7 @@ for row in c.execute('SELECT cars_car.car_number, '
             phone_number=f'{user_phone_number}',
             message=f'Pojazd numer: {row[0]}. Zakończyła się data przeglądu serwisowego {row[1]}'
         )
+        yeastar.close_command()
 
     elif warning_alert > car_service_inspection_date:
         yeastar.send_sms(
@@ -44,6 +47,7 @@ for row in c.execute('SELECT cars_car.car_number, '
             phone_number=f'{user_phone_number}',
             message=f'Pojazd numer: {row[0]}. Zbliża się termin przeglądu serwisowego {row[1]}'
         )
+        yeastar.close_command()
 
     if danger_alert > car_technical_inspection_date:
         yeastar.send_sms(
@@ -51,6 +55,7 @@ for row in c.execute('SELECT cars_car.car_number, '
             phone_number=f'{user_phone_number}',
             message=f'Pojazd numer: {row[0]}. Zakończyła się data przeglądu serwisowego {row[2]}'
         )
+        yeastar.close_command()
 
     elif warning_alert > car_technical_inspection_date:
         yeastar.send_sms(
@@ -58,5 +63,6 @@ for row in c.execute('SELECT cars_car.car_number, '
             phone_number=f'{user_phone_number}',
             message=f'Pojazd numer: {row[0]}. Zbliża się termin przeglądu serwisowego {row[2]}'
         )
+        yeastar.close_command()
 
-yeastar.close_command()
+
