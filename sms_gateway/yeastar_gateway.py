@@ -41,6 +41,7 @@ class Yeastar:
 
     def close_command(self):
         self.s.close()
+        print('Closing connection...')
         sleep(5)
 
     def send_sms(self, sim_port: int, phone_number: str, message: str):
@@ -48,6 +49,7 @@ class Yeastar:
             message=f'Action: smscommand\r\ncommand: gsm send sms {sim_port+1} {phone_number} "{message}" {generate_id}\r\n\r\n'.encode(),
             timeout=6
         )
+        print(f'Sending sms to {phone_number} ...')
 
 
 def generate_id():
