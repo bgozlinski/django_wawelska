@@ -7,6 +7,13 @@ class Car(models.Model):
         null=True,
         verbose_name='Numer pojazdu'
     )
+    car_name = models.CharField(
+        max_length=100,
+        blank=True,
+        null=True,
+        default='',
+        verbose_name='Marka i model'
+    )
     car_mileage = models.PositiveIntegerField(
         blank=True,
         null=True,

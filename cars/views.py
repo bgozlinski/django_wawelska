@@ -25,6 +25,20 @@ def car_list_all(request):
     )
 
 
+def car_list_all_secret(request):
+    cars = Car.objects.all()
+    warning_alert, danger_alert = check_inspection_date(delta_days=30)
+    return render(
+        request=request,
+        template_name='cars/car_list_all_secret.html',
+        context={
+            'cars': cars,
+            'warning_allert': warning_alert,
+            'danger_alert': danger_alert
+        }
+    )
+
+
 @login_required()
 def details(request, car_id):
     car = Car.objects.get(pk=car_id)
